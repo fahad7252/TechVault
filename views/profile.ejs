@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= user.username %>'s Profile
+        </title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Welcome, <%= user.username %>!</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Profile Details</h2>
+                <p><strong>Name:</strong>
+                    <%= user.details.name %>
+                </p>
+                <p><strong>Bio:</strong>
+                    <%= user.details.bio %>
+                </p>
+            </section>
+            <section>
+                <h2>Device Collections</h2>
+                <ul>
+                    <% user.collections.forEach(collection=> { %>
+                        <li>
+                           <!--- <a href="/collections/<%= collection._id %>">
+                                <%= collection.device.name %>
+                            </a> -->
+                        </li>
+                        <% }) %>
+                </ul>
+            </section>
+        </main>
+    </body>
+
+    </html>

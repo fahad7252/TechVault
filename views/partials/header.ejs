@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your App's Title</title>
+    <title>TechVault</title>
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <nav>
-      <a href="/">🏠</a>
+      <h1>TechVault</h1>
+      <a href="/">🏠</a><a href="/profile" class="btn">Profile</a>
+      <a href="/explore" class="btn">Explore</a>
       <div>
-        <a href="/unicorns">ALL UNICORNS</a>
         <!-- Above renders whether signed in or not -->
         <% if (user) { %>
-        <a href="/unicorns/new">ADD UNICORN</a>
         <a href="/auth/sign-out">SIGN OUT</a>
         <span><%= user.username %></span>
         <% } else { %>
