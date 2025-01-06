@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechVault</title>
-    <link rel="stylesheet" href="/css/main.css" />
-  </head>
-  <body>
-    <nav>
-      <h1>TechVault</h1>
-      <a href="/">🏠</a><a href="/profile" class="btn">Profile</a>
-      <a href="/explore" class="btn">Explore</a>
-      <div>
-        <!-- Above renders whether signed in or not -->
-        <% if (user) { %>
-        <a href="/auth/sign-out">SIGN OUT</a>
-        <span><%= user.username %></span>
-        <% } else { %>
-        <a href="/auth/sign-up">SIGN UP</a>
-        <a href="/auth/sign-in">SIGN IN</a>
-        <% } %>
-      </div>
-    </nav>
-    <main>
-      <h1><%= title %></h1>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <nav>
+    <h1>TechVault</h1>
+    <a href="/">🏠 Home</a>
+    <a href="/profile" class="btn">Profile</a>
+    <a href="/collections" class="btn">Collection</a>
+    <a href="/posts" class="btn">Posts</a>
+    <div>
+      <% if (user) { %>
+        <a href="/auth/sign-out">SIGN OUT</a>
+        <span>
+          <%= user.username %>
+        </span>
+        <% } else { %>
+          <a href="/auth/sign-up">SIGN UP</a>
+          <a href="/auth/sign-in">SIGN IN</a>
+          <% } %>
+    </div>
+  </nav>

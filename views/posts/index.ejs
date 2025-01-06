@@ -1,0 +1,82 @@
+
+
+<main>
+    <h1><%= title %></h1>
+
+    <div class="posts-grid">
+        <% if (collections && collections.length > 0) { %>
+            <% collections.forEach(collection => { %>
+                <div class="post-card">
+                    <!-- User Info -->
+                    <div class="post-header">
+                        <% if (collection.user) { %>
+                            <h3>Posted by: <%= collection.user.username %></h3>
+                        <% } %>
+                    </div>
+
+                    <!-- Device Info -->
+                    <% if (collection && collection.device) { %>
+                        <div class="post-content">
+                            <!-- Device Image -->
+                            <% if (collection.device.images && collection.device.images.length > 0) { %>
+                                <div class="post-image">
+                                    <img src="<%= collection.device.images[0] %>" alt="Device Image">
+                                </div>
+                            <% } %>
+
+                            <h3><%= collection.device.name || 'Unnamed Device' %></h3>
+                            
+                            <% if (collection.device.type) { %>
+                                <p>Type: <%= collection.device.type %></p>
+                            <% } %>
+                            
+                            <% if (collection.device.brand) { %>
+                                <p>Brand: <%= collection.device.brand %></p>
+                            <% } %>
+
+                            <!-- Memory -->
+                            <% if (collection.device.memories && collection.device.memories.length > 0) { %>
+                                <div class="memory-section">
+                                    <p><%= collection.device.memories[0] %></p>
+                                </div>
+                            <% } %>
+                        </div>
+
+                        <!-- Social Section -->
+                        <div class="social-section">
+                            <!-- Likes -->
+                            <form action="/posts/<%= collection._id %>/likes" method="POST" style="display:inline;">
+                                <button type="submit" class="like-btn">
+                                    <%= collection.likes && collection.likes.includes(user._id) ? '❤️' : '🤍' %>
+                                    <%= collection.likes ? collection.likes.length : 0 %>
+                                </button>
+                            </form>
+
+                            <!-- Comments -->
+                            <div class="comment-section">
+                                <form action="/posts/<%= collection._id %>/comments" method="POST">
+                                    <input type="text" name="text" placeholder="Add a comment..." required>
+                                    <button type="submit">Post</button>
+                                </form>
+                                
+                                <% if (collection.comments && collection.comments.length > 0) { %>
+                                    <div class="comments">
+                                        <% collection.comments.slice(0, 2).forEach(comment => { %>
+                                            <% if (comment && comment.user) { %>
+                                                <p><strong><%= comment.user.username %>:</strong> <%= comment.text %></p>
+                                            <% } %>
+                                        <% }) %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <a href="/posts/<%= collection._id %>" class="view-details">View Details</a>
+                    <% } %>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No collections to display!</p>
+        <% } %>
+    </div>
+</main>

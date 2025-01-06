@@ -11,7 +11,6 @@ app.set("view engine", "ejs");
 const port = process.env.PORT || "3000";
 
 mongoose.connect(process.env.MONGODB_URI);
-
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
@@ -24,12 +23,16 @@ mongoose.connection.on("connected", () => {
 
 // Morgan for logging HTTP requests
 app.use(morgan("dev"));
+
 // Static middleware for returning static assets to the browser
 app.use(express.static("public"));
+
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
+
 // Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride("_method"));
+
 // Session middleware
 app.use(
   session({
@@ -44,7 +47,7 @@ app.use(require("./middleware/add-user-to-locals-and-req"));
 
 // Routes
 
-// GET /  (home page functionality)
+// GET / (home page functionality)
 app.get("/", (req, res) => {
   res.render("home.ejs", { title: "Home Page" });
 });
@@ -54,14 +57,15 @@ app.get("/", (req, res) => {
 // defined in the router module
 app.use("/auth", require("./controllers/auth"));
 
-app.use("/profile", require("./controllers/profile"));
-
 // Any requests that get this far must have a signed in
 // user thanks to ensureSignedIn middleware
+
 app.use(require("./middleware/ensure-signed-in"));
 // Any controller/routes mounted below here will have
 // ALL routes protected by the ensureSignedIn middleware
-
+app.use("/profile", require("./controllers/profile"));
+app.use("/collections", require("./controllers/collections"));
+app.use("/posts", require("./controllers/posts"));
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });

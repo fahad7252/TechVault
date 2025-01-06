@@ -25,18 +25,13 @@
                 </p>
             </section>
             <section>
-                <h2>Device Collections</h2>
+                <h2><a href="/collections" class="btn">Collection</a></h2>
                 <ul>
-                    <% user.collections.forEach(collection=> { %>
-                        <li>
-                           <!--- <a href="/collections/<%= collection._id %>">
-                                <%= collection.device.name %>
-                            </a> -->
-                        </li>
-                        <% }) %>
+                    <!-- You can add more detailed information about the user's collections here if needed -->
                 </ul>
             </section>
         </main>
     </body>
 
     </html>
+    <%- include('partials/footer.ejs') %>

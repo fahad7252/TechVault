@@ -1,0 +1,36 @@
+<main>
+    <header>
+        <h1>New Collection</h1>
+    </header>
+    <form action="/collections" method="POST">
+        <div>
+            <label for="name">Device Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="type">Device Type:</label>
+            <input type="text" id="type" name="type" required>
+        </div>
+        <div>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" required>
+        </div>
+        <div>
+            <label for="startYear">Start Year:</label>
+            <input type="date" id="startYear" name="startYear">
+        </div>
+        <div>
+            <label for="endYear">End Year:</label>
+            <input type="date" id="endYear" name="endYear">
+        </div>
+        <div>
+            <label for="images">Images (comma-separated URLs):</label>
+            <input type="text" id="images" name="images">
+        </div>
+        <div>
+            <label for="memories">Memories (comma-separated):</label>
+            <textarea id="memories" name="memories"></textarea>
+        </div>
+        <button type="submit">Add Collection</button>
+    </form>
+</main>

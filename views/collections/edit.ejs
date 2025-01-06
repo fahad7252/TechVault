@@ -1,0 +1,32 @@
+
+    <main>
+        <header>
+            <h1>Edit Collection</h1>
+        </header>
+        <form action="/collections/<%= collection._id %>?_method=PUT" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="device.name" id="name" value="<%= collection.device.name %>" required>
+        
+            <label for="type">Type:</label>
+            <input type="text" name="device.type" id="type" value="<%= collection.device.type %>" required>
+        
+            <label for="brand">Brand:</label>
+            <input type="text" name="device.brand" id="brand" value="<%= collection.device.brand %>" required>
+        
+            <label for="startYear">Start Year:</label>
+            <input type="number" name="device.startYear" id="startYear" value="<%= collection.device.startYear %>">
+        
+            <label for="endYear">End Year:</label>
+            <input type="number" name="device.endYear" id="endYear" value="<%= collection.device.endYear %>">
+        
+            <label for="images">Images (comma-separated URLs):</label>
+            <input type="text" name="device.images" id="images" value="<%= collection.device.images.join(" ,") %>">
+        
+            <label for="memories">Memories (comma-separated):</label>
+            <input type="text" name="device.memories" id="memories" value="<%= collection.device.memories.join(" ,") %>">
+        
+            <button type="submit">Update</button>
+        </form>
+
+    </main>
+    

@@ -1,0 +1,91 @@
+
+    <main>
+        <article class="post-detail">
+            <!-- Device Images -->
+            <% if (collection.device.images && collection.device.images.length> 0) { %>
+                <div class="post-images">
+                    <% collection.device.images.forEach(image=> { %>
+                        <img src="<%= image %>" alt="Device Image">
+                        <% }) %>
+                </div>
+                <% } %>
+
+                    <!-- Post Header -->
+                    <div class="post-header">
+                        <h2>
+                            <%= collection.device.name %>
+                        </h2>
+                        <p>Posted by <a href="/users/<%= collection.user._id %>">
+                                <%= collection.user.username %>
+                            </a></p>
+                        <small>
+                            <%= collection.createdAt.toLocaleDateString() %>
+                        </small>
+                    </div>
+
+                    <!-- Device Details -->
+                    <div class="post-content">
+                        <% if (collection.device.memories && collection.device.memories.length> 0) { %>
+                            <div class="memories">
+                                <h3>Memories</h3>
+                                <% collection.device.memories.forEach(memory=> { %>
+                                    <p>
+                                        <%= memory %>
+                                    </p>
+                                    <% }) %>
+                            </div>
+                            <% } %>
+                    </div>
+
+                    <!-- Like Section -->
+                    <div class="social-actions">
+                        <form action="/posts/<%= collection._id %>/likes" method="POST">
+                            <button type="submit" class="btn">
+                                <%= collection.likes.some(like=> like._id.equals(user._id)) ? '❤️ Unlike' : '🤍 Like' %>
+                            </button>
+                        </form>
+                        <span>
+                            <%= collection.likes.length %> likes
+                        </span>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <section class="comments">
+                        <h3>Comments</h3>
+
+                        <!-- Add Comment Form -->
+                        <form action="/posts/<%= collection._id %>/comments" method="POST" class="comment-form">
+                            <textarea name="text" required placeholder="Add a comment..."></textarea>
+                            <button type="submit">Post Comment</button>
+                        </form>
+                       <!--  Comment  -->
+                        <div class="comments-list">
+                            <% if (collection.comments.length===0) { %>
+                                <p>No comments yet</p>
+                                <% } else { %>
+                                    <% collection.comments.forEach(comment=> { %>
+                                        <div class="comment">
+                                            <div class="comment-header">
+                                                <a href="/users/<%= comment.user._id %>">
+                                                    <%= comment.user.username %>
+                                                </a>
+                                                <small>
+                                                    <%= comment.createdAt.toLocaleDateString() %>
+                                                </small>
+                                            </div>
+                                            <p>
+                                                <%= comment.text %>
+                                            </p>
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                        </div>
+
+
+                    </section>
+
+                    <div class="post-actions">
+                        <a href="/posts" class="btn">Back to Collections</a>
+                    </div>
+        </article>
+    </main>

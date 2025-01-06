@@ -15,9 +15,32 @@ const collectionSchema = new Schema({
   device: deviceSchema,
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User", // Changed from "user" to "User"
     required: true,
+  },
+  comments: [
+    {
+      text: String,
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Make sure this matches User model name
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Make sure this matches User model name
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
-module.exports = mongoose.model("collection", collectionSchema);
+module.exports = mongoose.model("Collection", collectionSchema);

@@ -1,0 +1,52 @@
+<main>
+    <h2>
+        <%= collection.device.name %>
+    </h2>
+
+    <div>
+        <p><strong>Brand:</strong>
+            <%= collection.device.brand %>
+        </p>
+        <p><strong>Type:</strong>
+            <%= collection.device.type %>
+        </p>
+        <% if (collection.device.startYear) { %>
+            <p><strong>Start Year:</strong>
+                <%= collection.device.startYear %>
+            </p>
+            <% } %>
+                <% if (collection.device.endYear) { %>
+                    <p><strong>End Year:</strong>
+                        <%= collection.device.endYear %>
+                    </p>
+                    <% } %>
+
+                        <% if (collection.device.images && collection.device.images.length) { %>
+                            <h3>Images</h3>
+                            <div>
+                                <% collection.device.images.forEach(function(image) { %>
+                                    <img src="<%= image %>" alt="Device Image">
+                                    <% }); %>
+                            </div>
+                            <% } %>
+
+                                <% if (collection.device.memories && collection.device.memories.length) { %>
+                                    <h3>Memories</h3>
+                                    <ul>
+                                        <% collection.device.memories.forEach(function(memory) { %>
+                                            <li>
+                                                <%= memory %>
+                                            </li>
+                                            <% }); %>
+                                    </ul>
+                                    <% } %>
+    </div>
+
+    <div>
+        <a href="/collections/<%= collection._id %>/edit" class="btn">Edit Collection</a>
+        <form action="/collections/<%= collection._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn">Delete Collection</button>
+        </form>
+        <a href="/collections" class="btn">Back to Collections</a>
+    </div>
+</main>
