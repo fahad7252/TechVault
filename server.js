@@ -66,6 +66,7 @@ app.use(require("./middleware/ensure-signed-in"));
 app.use("/profile", require("./controllers/profile"));
 app.use("/collections", require("./controllers/collections"));
 app.use("/posts", require("./controllers/posts"));
+
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });

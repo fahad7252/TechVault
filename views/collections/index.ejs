@@ -1,28 +1,41 @@
-<main>
-    <h2>
-        <%= title %>
-    </h2>
-
-    <section>
-        <% if (collections && collections.length) { %>
-            <% collections.forEach(function(collection) { %>
-                <div>
-                    <h3>
-                        <%= collection && collection.device ? collection.device.name : 'Untitled Device' %>
-                    </h3>
-                    <p>Brand: <%= collection && collection.device ? collection.device.brand : 'Unknown' %>
-                    </p>
-                    <p>Type: <%= collection && collection.device ? collection.device.type : 'Unknown' %>
-                    </p>
-                    <a href="/collections/<%= collection._id %>">View Details</a>
-                </div>
-                <% }); %>
-                    <% } else { %>
-                        <p>No collections yet!</p>
-                        <% } %>
-    </section>
-
-    <section>
-        <a href="/collections/new" class="btn">Add New Collection</a>
-    </section>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <main>
+        <header>
+        <h1>
+            <%= title %>
+        </h1>
+    </header>
+        <section>
+            <% if (collections && collections.length) { %>
+                <% collections.forEach(function(collection) { %>
+                    <div>
+                        <h3>
+                            <%= collection && collection.device ? collection.device.name : 'Untitled Device' %>
+                        </h3>
+                        <p>Brand: <%= collection && collection.device ? collection.device.brand : 'Unknown' %>
+                        </p>
+                        <p>Type: <%= collection && collection.device ? collection.device.type : 'Unknown' %>
+                        </p>
+                        <a href="/collections/<%= collection._id %>">View Details</a>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No collections yet!</p>
+                            <% } %>
+        </section>
+    
+        <section>
+            <a href="/collections/new" class="btn">Add New Collection</a>
+        </section>
+    </main>
+    
+</body>
+</html>

@@ -1,4 +1,55 @@
+
 <%- include('./partials/header.ejs') %>
-<!-- Home Page's Content -->
-<%- include('./partials/footer.ejs') %>
+
+    <main class="home-container">
+        <section class="welcome-hero">
+            <div class="blog-content">
+                <h1>TechVault: Preserving Our Digital Memories</h1>
+
+                <p class="intro">Remember your first computer? That clunky desktop that whirred to life every morning,
+                    greeting you with its familiar startup sound. Or maybe it was that flip phone you carried through
+                    high school, the one with the tiny screen and endless text messages. These devices weren't just
+                    tools – they were companions on our journey through life.</p>
+
+                <p>In today's rapid-fire world of technological advancement, we often forget these faithful digital
+                    companions. That old iPod that got you through countless workouts, the GameBoy that made long car
+                    rides bearable, or your first smartphone that opened up a world of possibilities – they all have
+                    stories to tell.</p>
+
+                <p class="highlight">That's why we created TechVault.</p>
+
+                <div class="cta-buttons">
+                    <% if (!user) { %>
+                        <a href="/auth/sign-up" class="btn btn-primary">Start Your Collection</a>
+                        <a href="/auth/sign-in" class="btn btn-secondary">Sign In</a>
+                        <% } else { %>
+                            <a href="/collections" class="btn btn-primary">View Your Collection</a>
+                            <a href="/posts" class="btn btn-secondary">Explore Community</a>
+                            <% } %>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h2>Create Collections</h2>
+                <p>Document your tech journey. Add photos, write memories, and preserve the stories of devices that
+                    shaped your life.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>Share Memories</h2>
+                <p>Connect with others who remember the same devices. Comment, like, and share your tech nostalgia.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>Build Community</h2>
+                <p>Discover collections from other users and be part of a community that values the history of personal
+                    technology.</p>
+            </div>
+        </section>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+
 
