@@ -86,5 +86,21 @@ router.post("/:id/comments", async (req, res) => {
     res.redirect("/posts");
   }
 });
+router.get("/:id", async (req, res) => {
+  try {
+    const collection = await Collection.findById(req.params.id)
+      .populate("user", "username")
+      .populate("comments.user", "username")
+      .populate("likes");
+
+    res.render("posts/show", {
+      title: collection.device.name,
+      collection,
+    });
+  } catch (err) {
+    console.log(err);
+    res.redirect("/posts");
+  }
+});
 
 module.exports = router;

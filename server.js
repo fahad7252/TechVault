@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require("express-session");
-
+const User = require("./models/user");
 const app = express();
 app.set("view engine", "ejs");
 // Set the port from environment variable or default to 3000
@@ -66,6 +66,7 @@ app.use(require("./middleware/ensure-signed-in"));
 app.use("/profile", require("./controllers/profile"));
 app.use("/collections", require("./controllers/collections"));
 app.use("/posts", require("./controllers/posts"));
+app.use("/users", require("./controllers/users"));
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

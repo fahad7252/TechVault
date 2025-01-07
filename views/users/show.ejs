@@ -1,14 +1,94 @@
-<main>
-    <article class="user-profile">
-        <header>
+<%- include('../partials/header') %>
+
+</body>
+    <main class="profile-page">
+        <div class="user-info">
             <h1>
-                <%= user.username %>
+                <%= profileUser.username %>'s Profile
             </h1>
-        </header>
-        <section class="user-details">
-            <p>Email: <%= user.email %>
+            <% if (profileUser.details && profileUser.details.bio) { %>
+                <p class="bio">
+                    <%= profileUser.details.bio %>
+                </p>
+                <% } %>
+        </div>
+
+        <div class="user-stats">
+            <p>Collections: <%= collections.length %>
             </p>
-            <!-- You can add more user details here -->
-        </section>
-    </article>
-</main>
+        </div>
+
+        <div class="user-collections">
+            <h2>Recent Collections</h2>
+            <div class="collections-grid">
+                <% collections.forEach(collection=> { %>
+                    <div class="collection-card">
+                        <% if (collection.device.images && collection.device.images.length> 0) { %>
+                            <img src="<%= collection.device.images[0] %>" alt="<%= collection.device.name %>">
+                            <% } %>
+                                <h3>
+                                    <%= collection.device.name %>
+                                </h3>
+                                <% if (collection.device.memories && collection.device.memories.length> 0) { %>
+                                    <p class="memory">
+                                        <%= collection.device.memories[0] %>
+                                    </p>
+                                    <% } %>
+                                        <a href="/posts/<%= collection._id %>" class="view-btn">View Details</a>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .profile-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-stats {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .memory {
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #000;
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+
+    <%- include('../partials/footer') %>
