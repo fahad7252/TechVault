@@ -15,7 +15,7 @@ const collectionSchema = new Schema({
   device: deviceSchema,
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Changed from "user" to "User"
+    ref: "User",
     required: true,
   },
   comments: [
@@ -23,7 +23,7 @@ const collectionSchema = new Schema({
       text: String,
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // Make sure this matches User model name
+        ref: "User",
       },
       createdAt: {
         type: Date,
@@ -34,7 +34,7 @@ const collectionSchema = new Schema({
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Make sure this matches User model name
+      ref: "User",
     },
   ],
   createdAt: {

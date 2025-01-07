@@ -5,8 +5,11 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const User = require("./models/user");
+const path = require("path");
+
 const app = express();
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT || "3000";
 
@@ -26,7 +29,7 @@ app.use(morgan("dev"));
 
 // Static middleware for returning static assets to the browser
 app.use(express.static("public"));
-
+app.use(express.static(path.join(__dirname, "public")));
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
 

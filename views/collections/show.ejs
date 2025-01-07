@@ -1,9 +1,11 @@
-<main>
+<%- include('../partials/header') %>
+
+<main class="device-details">
     <h2>
         <%= collection.device.name %>
     </h2>
 
-    <div>
+    <div class="info-section">
         <p><strong>Brand:</strong>
             <%= collection.device.brand %>
         </p>
@@ -20,33 +22,111 @@
                         <%= collection.device.endYear %>
                     </p>
                     <% } %>
-
-                        <% if (collection.device.images && collection.device.images.length) { %>
-                            <h3>Images</h3>
-                            <div>
-                                <% collection.device.images.forEach(function(image) { %>
-                                    <img src="<%= image %>" alt="Device Image">
-                                    <% }); %>
-                            </div>
-                            <% } %>
-
-                                <% if (collection.device.memories && collection.device.memories.length) { %>
-                                    <h3>Memories</h3>
-                                    <ul>
-                                        <% collection.device.memories.forEach(function(memory) { %>
-                                            <li>
-                                                <%= memory %>
-                                            </li>
-                                            <% }); %>
-                                    </ul>
-                                    <% } %>
     </div>
 
-    <div>
-        <a href="/collections/<%= collection._id %>/edit" class="btn">Edit Collection</a>
-        <form action="/collections/<%= collection._id %>?_method=DELETE" method="POST" style="display: inline;">
-            <button type="submit" class="btn">Delete Collection</button>
-        </form>
-        <a href="/collections" class="btn">Back to Collections</a>
-    </div>
+    <% if (collection.device.images && collection.device.images.length) { %>
+        <div class="images-section">
+            <h3>Images</h3>
+            <div class="images-grid">
+                <% collection.device.images.forEach(function(image) { %>
+                    <img src="<%= image %>" alt="Device Image">
+                    <% }); %>
+            </div>
+        </div>
+        <% } %>
+
+            <% if (collection.device.memories && collection.device.memories.length) { %>
+                <div class="memories-section">
+                    <h3>Memories</h3>
+                    <ul class="memories-list">
+                        <% collection.device.memories.forEach(function(memory) { %>
+                            <li>
+                                <%= memory %>
+                            </li>
+                            <% }); %>
+                    </ul>
+                </div>
+                <% } %>
+
+                    <div class="action-buttons">
+                        <a href="/collections/<%= collection._id %>/edit" class="btn">Edit Collection</a>
+                        <form action="/collections/<%= collection._id %>?_method=DELETE" method="POST"
+                            style="display: inline;">
+                            <button type="submit" class="btn">Delete Collection</button>
+                        </form>
+                        <a href="/collections" class="btn">Back to Collections</a>
+                    </div>
 </main>
+<style>
+    .device-details {
+        background-color:rgb(0, 0, 0);
+    max-width: auto;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.device-details h2 {
+    margin-bottom: 30px;
+}
+
+.info-section {
+    margin-bottom: 30px;
+}
+
+.info-section p {
+    margin: 10px 0;
+}
+
+.images-section {
+    margin: 10px 0;
+}
+
+.images-grid {
+   display: grid;
+   gap: 1rem;
+   margin-bottom: 1rem;
+}
+
+.images-grid img {
+     width: 100%;
+   height: 700px;
+   object-fit: contain;
+   object-position: 50% 50%;
+   border-radius: 10px;
+}
+
+.memories-section {
+    margin: 30px 0;
+}
+
+.memories-list {
+    list-style: none;
+    padding: 0;
+}
+
+.memories-list li {
+    background: #000000;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 1px solid black;
+    background: white;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background: #025346;
+}
+</style>
