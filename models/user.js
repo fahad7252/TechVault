@@ -11,8 +11,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+
   details: {
-    name: String,
+    name: { type: String, required: true },
     bio: String,
   },
   collections: [

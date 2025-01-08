@@ -7,5 +7,56 @@
   <input type="password" name="password" id="password" />
   <button type="submit">SIGN IN</button>
 </form>
+<style>
 
-<%- include('../partials/footer.ejs')%>
+ 
+  form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+  }
+
+  form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  form input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  form button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  form button:active {
+    transform: scale(0.98);
+  }
+</style>
+
+
