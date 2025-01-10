@@ -5,6 +5,7 @@ Tech Vault
 
 
 Overview - Its a device collection web app where you can add your device collections with memories and also see like comment on other peoples collections.
+It is also mobile responsive.
 
 Features- its a crud app you can create edit update and delete your collections , profile information and post intarections.
 
