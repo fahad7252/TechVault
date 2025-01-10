@@ -78,7 +78,42 @@ nav a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+@media screen and (max-width: 768px) {
 
+  nav,
+  footer {
+    padding: 1rem;
+    /* Reduce padding on smaller screens */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: flex-start;
+    /* Align items to the left */
+  }
+
+  nav a {
+    padding: 0.5rem;
+    /* Adjust padding for better spacing on mobile */
+  }
+
+  footer {
+    text-align: center;
+    /* Center text in the footer */
+    margin-top: 1rem;
+  }
+}
+
+/* Further adjustment for very small screens */
+@media screen and (max-width: 480px) {
+  nav a {
+    padding: 0.5rem 0;
+    /* Adjust padding for extra-small screens */
+  }
+
+  footer {
+    padding: 1rem 0;
+    /* Adjust footer padding */
+  }
+}
 main {
   text-align: center;
   width: 100%;

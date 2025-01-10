@@ -1,3 +1,12 @@
+body {
+    background: black;
+    background-size: 300% 300%;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .device-details {
     max-width: 800px;
     margin: 0 auto;

@@ -23,10 +23,115 @@
             <input type="text" name="device.images" id="images" value="<%= collection.device.images.join(" ,") %>">
         
             <label for="memories">Memories (comma-separated):</label>
-            <input type="text" name="device.memories" id="memories" value="<%= collection.device.memories.join(" ,") %>">
+            <textarea type="text" name="device.memories" id="memories" value="<%= collection.device.memories.join(" ,") %>"></textarea>
         
             <button type="submit">Update</button>
         </form>
 
     </main>
+    <style>
+        :root {
+    --primary-color: #ccff00d5;
+    /* Vibrant blue */
+    --secondary-color: #22ccee;
+    /* Cyan */
+    --bg-color: #020113;
+    /* Dark blue-gray */
+    --text-color: #f8fafc;
+    /* Light text */
+    --accent-color: #000000;
+    /* Teal for accents */
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    width: 100%;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    margin: 1rem auto;
+}
+
+section {
+    background: rgba(92, 19, 19, 0.799);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    color: var(--text-color);
+}
+
+section h2 {
+    font-size: 3rem;
+    text-align: left;
+    color: var(--text-color);
     
+    margin-bottom: 1rem;
+}
+
+section p {
+    font-size: 2rem;
+    color: var(--text-color);
+    text-align: left;
+
+    line-height: 1.8;
+}
+
+strong {
+    color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.5);
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+}
+    </style>
