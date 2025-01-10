@@ -12,6 +12,11 @@ Website to the app - https://techvault-9673b523b26d.herokuapp.com/
 
 project Planning link- https://trello.com/b/aT3Pa9Vq/project-2
 
+Technologies and libraries used:
+Exress.js , Node.js, MongoDB, EJS, CSS, JavaScript, 
+MDN reference, SEB-112 Crud app starter lab General Assembly, Chat Gpt for quick references and in-depth explainations
+Mentors/Instructors for this project- Mr.Jan Horak and Mr James Clark from General Assembly
+
 thanks for checking out my work !!! 
 
 
